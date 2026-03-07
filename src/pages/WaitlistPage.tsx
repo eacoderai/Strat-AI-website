@@ -5,15 +5,27 @@ import { useState } from 'react';
 import { CheckCircle2, Sparkles, Smartphone, ArrowRight } from 'lucide-react';
 import { Navigation } from '../components/Navigation';
 import { enqueue, submitNow } from '../utils/submissionQueue';
+import { isValidEmail } from '../utils/validation';
 
 export default function WaitlistPage() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
+    setError('');
+
+    if (!email) {
+      setError('Please enter an email address');
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      setError('Please enter a valid email address (e.g., name@example.com)');
+      return;
+    }
 
     setIsSubmitting(true);
     const payload = { email, source: 'Waitlist Page' };
@@ -48,26 +60,34 @@ export default function WaitlistPage() {
               </p>
 
               {!submitted ? (
-                <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-                  <Input
-                    name="email"
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    disabled={isSubmitting}
-                    className="h-12 bg-card border-border text-foreground rounded-xl flex-grow"
-                  />
-                  <Button 
-                    type="submit" 
-                    disabled={isSubmitting}
-                    className="h-12 px-8 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold"
-                  >
-                    {isSubmitting ? 'Joining...' : 'Join Waitlist'}
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </form>
+                <div className="space-y-2">
+                  <form onSubmit={handleSubmit} className="flex flex-col sm:row gap-3">
+                    <Input
+                      name="email"
+                      type="email"
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        if (error) setError('');
+                      }}
+                      required
+                      disabled={isSubmitting}
+                      className={`h-12 bg-card border-border text-foreground rounded-xl flex-grow ${error ? 'border-red-500' : ''}`}
+                    />
+                    <Button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="h-12 px-8 bg-primary hover:bg-primary/90 text-white rounded-xl font-bold"
+                    >
+                      {isSubmitting ? 'Joining...' : 'Join Waitlist'}
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </form>
+                  {error && (
+                    <p className="text-red-500 text-sm pl-1">{error}</p>
+                  )}
+                </div>
               ) : (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}

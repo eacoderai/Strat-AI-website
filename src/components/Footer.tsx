@@ -3,17 +3,23 @@ import { Twitter, Instagram, ShieldCheck, Youtube, Loader2 } from 'lucide-react'
 import { SiTiktok } from '@icons-pack/react-simple-icons';
 import { useState } from 'react';
 import { enqueue, submitNow } from '../utils/submissionQueue';
+import { isValidEmail } from '../utils/validation';
 import logo from '../assets/StratAI Logo.png';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error' | 'invalid'>('idle');
   const showNewsletter = false;
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
+
+    if (!isValidEmail(email)) {
+      setStatus('invalid');
+      return;
+    }
 
     setStatus('loading');
     const payload = { email, source: 'Newsletter Footer' };
@@ -103,9 +109,12 @@ export function Footer() {
                     name="email"
                     placeholder="Email" 
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (status === 'invalid') setStatus('idle');
+                    }}
                     disabled={status === 'loading'}
-                    className="bg-card border border-border rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:border-primary transition-colors disabled:opacity-50"
+                    className={`bg-card border border-border rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:border-primary transition-colors disabled:opacity-50 ${status === 'invalid' ? 'border-red-500' : ''}`}
                     required
                   />
                   <button 
@@ -116,6 +125,9 @@ export function Footer() {
                     {status === 'loading' ? <Loader2 className="w-4 h-4 animate-spin" /> : status === 'success' ? 'Joined!' : 'Join'}
                   </button>
                 </form>
+                {status === 'invalid' && (
+                  <p className="text-red-500 text-[10px] mt-2">Please enter a valid email address.</p>
+                )}
                 {status === 'error' && (
                   <p className="text-red-500 text-[10px] mt-2">Something went wrong. Try again.</p>
                 )}
