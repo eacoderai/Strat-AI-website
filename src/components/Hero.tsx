@@ -12,8 +12,8 @@ export function Hero() {
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-background">
       <Seo
         title="StratAI – AI Strategy Engine | Describe. Generate. Execute."
-        description="Turn plain-language ideas into executable strategy logic. Free to start."
-        keywords="StratAI, AI strategy engine, natural language to code, MQL4, MQL5, Pine Script"
+        description="Your AI strategy engine — for stocks, crypto, and forex. Describe your edge in plain English and generate executable logic for any market."
+        keywords="StratAI, AI strategy engine, strategy logic, stocks, crypto, forex, TradingView, MetaTrader, exchange APIs, Pine Script, MQL4, MQL5"
       />
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -49,6 +49,27 @@ export function Hero() {
             backgroundSize: '40px 40px',
           }}
         />
+        <div className="absolute inset-0 flex items-center justify-center opacity-[0.08]">
+          <svg
+            width="1200"
+            height="650"
+            viewBox="0 0 1200 650"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="max-w-none"
+          >
+            <g stroke="currentColor" strokeOpacity="0.35" strokeWidth="2">
+              <path d="M70 160 C 160 90, 260 230, 360 150 S 560 170, 650 120 S 860 210, 980 140 S 1120 160, 1130 120" />
+              <path d="M70 330 C 160 260, 260 390, 360 320 S 560 350, 650 290 S 860 380, 980 300 S 1120 320, 1130 280" />
+              <path d="M70 500 C 160 430, 260 560, 360 490 S 560 520, 650 470 S 860 560, 980 480 S 1120 500, 1130 460" />
+            </g>
+            <g fill="currentColor" fillOpacity="0.45" fontFamily="ui-sans-serif, system-ui" fontSize="18" fontWeight="600">
+              <text x="80" y="120">SPY</text>
+              <text x="80" y="290">BTC</text>
+              <text x="80" y="460">EURUSD</text>
+            </g>
+          </svg>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
@@ -62,15 +83,15 @@ export function Hero() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
-            Trusted by 10,000+ Traders
+            Trusted by 5,000+ Builders
           </div>
           
           <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6 leading-tight">
-            Describe. Generate. Execute.
+            Generate strategy logic for any market
           </h1>
           
           <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-xl leading-relaxed">
-            Turn your strategy ideas into code or structured plans — in seconds. No coding required.
+            Universal strategy engine. Your AI strategy builder — for stocks, crypto, and forex.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
@@ -80,7 +101,7 @@ export function Hero() {
               onClick={() => navigate('/waitlist')}
             >
               <Layout className="w-5 h-5" />
-              Get Started Free
+              Join 5,000+ builders shaping StratAI
             </Button>
             <Button 
               size="lg" 

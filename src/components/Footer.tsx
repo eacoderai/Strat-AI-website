@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Twitter, Instagram, ShieldCheck, Youtube, Loader2 } from 'lucide-react';
-import { SiTiktok } from '@icons-pack/react-simple-icons';
+import { SiDiscord, SiReddit, SiTiktok } from '@icons-pack/react-simple-icons';
 import { useState } from 'react';
 import { enqueue, submitNow } from '../utils/submissionQueue';
 import { isValidEmail } from '../utils/validation';
@@ -43,7 +43,7 @@ export function Footer() {
               <img 
                 src={logo} 
                 alt="StratAI" 
-                className="h-16 sm:h-18 lg:h-20 w-auto object-contain relative z-10" 
+                className="h-8 sm:h-9 lg:h-10 w-auto object-contain relative z-10" 
                 loading="lazy" 
                 decoding="async" 
                 fetchPriority="low" 
@@ -54,10 +54,12 @@ export function Footer() {
             </p>
             <div className="flex gap-4">
               {[
-                { icon: Twitter, href: 'https://x.com/eacoderai?s=21', label: 'Twitter' },
-                { icon: SiTiktok, href: 'https://www.tiktok.com/@eacoderai?_r=1&_t=ZS-91V505QFOVU', label: 'TikTok' },
-                { icon: Instagram, href: 'https://www.instagram.com/eacoderai?igsh=dW1scWN2eHBuaDBl', label: 'Instagram' },                
-                { icon: Youtube, href: 'https://www.youtube.com/@EACoderAI', label: 'YouTube' },
+                { icon: Twitter, href: 'https://x.com/_StratAI', label: 'Twitter' },
+                { icon: SiTiktok, href: 'https://www.tiktok.com/@_stratai', label: 'TikTok' },
+                { icon: Instagram, href: 'https://www.instagram.com/_stratai', label: 'Instagram' },                
+                { icon: SiDiscord, href: 'https://discord.com/', label: 'Discord (_stratai_03152)' },
+                { icon: SiReddit, href: 'https://www.reddit.com/user/StratAI', label: 'Reddit (u/StratAI)' },
+                { icon: Youtube, href: 'https://www.youtube.com/@stratai_trade', label: 'YouTube' },
               ].map((social, index) => (
                 <motion.a
                   key={index}

@@ -20,7 +20,7 @@ export default function FeaturesPage() {
             Everything you need with <span className="text-primary">StratAI</span>
           </motion.h1>
           <p className="text-muted-foreground text-xl max-w-3xl mx-auto">
-            StratAI is a universal AI strategy engine. Describe ideas in plain English and generate executable logic or structured plans for trading, crypto, and quantitative strategies.
+            StratAI is a universal AI strategy engine. Describe ideas in plain English and generate executable logic or structured plans for stocks, crypto, and forex.
           </p>
         </div>
 
@@ -100,7 +100,7 @@ export default function FeaturesPage() {
               <div className="space-y-6 font-mono text-sm">
                 <div className="pb-4 border-b border-border">
                   <h4 className="text-primary font-bold mb-2"># STRATEGY: Trend-Following Breakout</h4>
-                  <p className="text-muted-foreground">Market: EURUSD | Timeframe: 1H</p>
+                  <p className="text-muted-foreground">Markets: SPY • BTC • EURUSD | Timeframe: 1H</p>
                 </div>
                 <div className="space-y-3">
                   <p className="text-foreground"><span className="text-primary">ENTRY:</span> Price closes above 20-day High AND RSI(14) {'>'} 60.</p>
@@ -136,9 +136,15 @@ export default function FeaturesPage() {
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
                 Generate Strategy Code. <span className="text-accent">Deploy with confidence.</span>
               </h2>
-              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-                Generate production-ready code for your platform (MT4, MT5, TradingView). No more waiting weeks for developers.
-              </p>
+              <div className="text-accent font-semibold mb-3">One engine. Every market.</div>
+              <div className="text-muted-foreground text-lg mb-8 leading-relaxed">
+                <div className="mb-3">Generate executable logic for your platform:</div>
+                <ul className="list-disc ml-5 space-y-1">
+                  <li>Stocks: Pine Script for TradingView</li>
+                  <li>Crypto: JSON/API-ready logic for Binance, Bybit</li>
+                  <li>Forex: MQL5 for MetaTrader</li>
+                </ul>
+              </div>
 
               <div className="grid grid-cols-2 gap-6 mb-10">
                 <div className="p-6 rounded-2xl bg-card border border-border">
@@ -149,7 +155,7 @@ export default function FeaturesPage() {
                 <div className="p-6 rounded-2xl bg-card border border-border">
                   <Zap className="w-8 h-8 text-accent mb-4" />
                   <h4 className="text-foreground font-bold mb-2">One-Click Export</h4>
-                  <p className="text-muted-foreground text-sm">Download .mq4, .mq5, or .pine files ready for immediate use.</p>
+                  <p className="text-muted-foreground text-sm">Export to TradingView (stocks), MetaTrader (forex), or exchange APIs (crypto).</p>
                 </div>
                 <div className="p-6 rounded-2xl bg-card border border-border">
                   <LineChart className="w-8 h-8 text-accent mb-4" />
@@ -159,16 +165,16 @@ export default function FeaturesPage() {
                 <div className="p-6 rounded-2xl bg-card border border-border">
                   <Download className="w-8 h-8 text-accent mb-4" />
                   <h4 className="text-foreground font-bold mb-2">Cross-Platform</h4>
-                  <p className="text-muted-foreground text-sm">Convert logic between MT4, MT5, and Pine Script seamlessly.</p>
+                  <p className="text-muted-foreground text-sm">Convert logic across TradingView, MetaTrader, and exchange APIs.</p>
                 </div>
               </div>
 
               <div className="mb-10 flex flex-wrap gap-4 items-center">
                 <span className="text-sm text-muted-foreground font-medium">Supported Platforms:</span>
                 <div className="flex gap-4">
-                  <span className="px-3 py-1 rounded-md bg-accent/10 border border-accent/20 text-accent text-xs font-bold">MetaTrader 4</span>
-                  <span className="px-3 py-1 rounded-md bg-accent/10 border border-accent/20 text-accent text-xs font-bold">MetaTrader 5</span>
-                  <span className="px-3 py-1 rounded-md bg-accent/10 border border-accent/20 text-accent text-xs font-bold">TradingView</span>
+                  <span className="px-3 py-1 rounded-md bg-accent/10 border border-accent/20 text-accent text-xs font-bold">TradingView (stocks)</span>
+                  <span className="px-3 py-1 rounded-md bg-accent/10 border border-accent/20 text-accent text-xs font-bold">MetaTrader (forex)</span>
+                  <span className="px-3 py-1 rounded-md bg-accent/10 border border-accent/20 text-accent text-xs font-bold">Binance/Bybit (crypto)</span>
                 </div>
               </div>
 
@@ -208,6 +214,14 @@ export default function FeaturesPage() {
               <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
                 Upload your execution history and get a breakdown of your edge, leaks, and optimizations — including deviations from your Strategy Plan.
               </p>
+              <div className="mb-10 p-6 rounded-2xl bg-card border border-accent/20">
+                <h4 className="text-foreground font-bold mb-2">Upload trade history from:</h4>
+                <ul className="list-disc ml-5 text-sm text-muted-foreground space-y-1">
+                  <li>TradingView (stocks)</li>
+                  <li>MetaTrader (forex)</li>
+                  <li>Binance/Bybit (crypto)</li>
+                </ul>
+              </div>
 
               <div className="space-y-6 mb-10">
                 <div className="flex gap-4">

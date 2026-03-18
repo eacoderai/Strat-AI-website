@@ -10,7 +10,7 @@ const STRATEGY_EXAMPLES: StrategyExample[] = [
   {
     title: "RSI Oversold/Overbought",
     description:
-      "Buy when RSI(14) < 30, sell when RSI(14) > 70. Use 50 pip stop loss and 100 pip take profit.",
+      "Buy when RSI(14) < 30, sell when RSI(14) > 70. Use ATR-based stops and a 1:2 risk-reward target.",
     risk: "Max 2% risk per trade",
   },
   {
@@ -29,7 +29,7 @@ const STRATEGY_EXAMPLES: StrategyExample[] = [
     title: "MACD + Bollinger Bands",
     description:
       "Buy when MACD crosses above signal line AND price touches lower Bollinger Band. Sell at upper band.",
-    risk: "Fixed 30 pip stop loss",
+    risk: "Stop loss at volatility band, position size by % risk per trade",
   },
 ];
 

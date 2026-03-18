@@ -29,7 +29,7 @@ export function FinalCTA() {
           transition={{ delay: 0.1 }}
           className="text-muted-foreground text-lg mb-12 max-w-2xl mx-auto"
         >
-          Join 10,000+ traders using AI to automate their edge and trade with professional discipline.
+          Join 5,000+ builders using AI to turn plain-English ideas into executable logic for stocks, crypto, and forex.
         </motion.p>
 
         <motion.div
@@ -45,7 +45,7 @@ export function FinalCTA() {
             onClick={() => navigate('/waitlist')}
           >
             <Layout className="w-5 h-5" />
-            Get Started Free
+            Join 5,000+ builders shaping StratAI
           </Button>
           <Button 
             size="lg" 
@@ -65,7 +65,7 @@ export function FinalCTA() {
           transition={{ delay: 0.4 }}
           className="mt-8 text-sm text-muted-foreground"
         >
-          Turn plain-language ideas into executable logic. Free to start.
+          Describe your edge in plain English → StratAI generates executable logic for stocks, crypto, and forex → Execute with confidence.
         </motion.p>
       </div>
     </section>

@@ -30,7 +30,7 @@ export function DataManagement() {
             </h2>
             
             <p className="text-gray-600 mb-8">
-              Convert your existing Expert Advisors between MQL4, MQL5, and Pine Script seamlessly. Our AI preserves your trading logic while adapting to platform-specific requirements.
+              Convert your existing strategy logic between MQL4, MQL5, Pine Script, and exchange APIs. Our AI preserves your rules while adapting to platform-specific requirements.
             </p>
 
             {/* Feature Points */}

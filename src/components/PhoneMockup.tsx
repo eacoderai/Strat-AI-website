@@ -91,7 +91,7 @@ function StrategyFormScreen() {
         >
           <label className="text-gray-600 text-sm mb-2 block">Instrument</label>
           <div className="flex items-center justify-between">
-            <span className="text-gray-400 text-sm">EURUSD</span>
+            <span className="text-gray-400 text-sm">SPY / BTC / EURUSD</span>
             <div className="w-4 h-4 border-2 border-purple-600 rounded" />
           </div>
         </motion.div>
@@ -102,9 +102,9 @@ function StrategyFormScreen() {
         >
           <label className="text-gray-600 text-sm mb-2 block">Platform</label>
           <div className="flex gap-2">
-            <div className="px-3 py-1 bg-purple-600 text-white rounded-full text-xs">MQL5</div>
-            <div className="px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-xs">MQL4</div>
-            <div className="px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-xs">Pine</div>
+            <div className="px-3 py-1 bg-purple-600 text-white rounded-full text-xs">TradingView</div>
+            <div className="px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-xs">MetaTrader</div>
+            <div className="px-3 py-1 bg-gray-200 text-gray-600 rounded-full text-xs">Exchange API</div>
           </div>
         </motion.div>
       </div>
@@ -139,7 +139,7 @@ function CodeGenerationScreen() {
           <h3 className="text-gray-800">Generated Code</h3>
           <p className="text-green-600 text-sm flex items-center gap-1">
             <span className="w-2 h-2 bg-green-600 rounded-full" />
-            MQL5 • Ready
+            Multi-Platform • Ready
           </p>
         </div>
         <motion.div
@@ -157,17 +157,15 @@ function CodeGenerationScreen() {
         whileHover={{ scale: 1.02 }}
       >
         <div className="space-y-2 text-xs font-mono">
-          <div className="text-purple-400">//+------------------------------------------------------------------+</div>
-          <div className="text-green-400">#property copyright "StratAI"</div>
-          <div className="text-green-400">#property version   "1.00"</div>
-          <div className="text-purple-400">//+------------------------------------------------------------------+</div>
-          <div className="text-blue-400">input double <span className="text-white">Lots</span> = 0.1;</div>
-          <div className="text-blue-400">input int <span className="text-white">StopLoss</span> = 50;</div>
-          <div className="text-blue-400">input int <span className="text-white">TakeProfit</span> = 100;</div>
+          <div className="text-purple-400">// StratAI • Strategy Logic</div>
+          <div className="text-green-400">asset = "SPY | BTC | EURUSD"</div>
+          <div className="text-blue-400">risk_per_trade = <span className="text-white">0.01</span></div>
+          <div className="text-blue-400">stop = <span className="text-white">1.5 * ATR</span></div>
+          <div className="text-blue-400">take_profit = <span className="text-white">3.0 * risk</span></div>
           <div className="text-gray-500">...</div>
-          <div className="text-yellow-400">void <span className="text-white">OnTick</span>()</div>
+          <div className="text-yellow-400">if <span className="text-white">entry_condition</span></div>
           <div className="text-white">{'{'}</div>
-          <div className="pl-4 text-gray-400">// Strategy logic here</div>
+          <div className="pl-4 text-gray-400">place_order(size_from_risk, stop, take_profit)</div>
           <div className="text-white">{'}'}</div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-gray-900 to-transparent" />
@@ -225,7 +223,7 @@ function ChatScreen() {
           animate={{ opacity: 1, x: 0 }}
         >
           <div className="bg-purple-600 text-white rounded-2xl rounded-tr-sm px-4 py-3 max-w-[80%]">
-            <p className="text-sm">Add a trailing stop of 50 pips</p>
+            <p className="text-sm">Add a trailing stop based on 1.5× ATR</p>
           </div>
         </motion.div>
 
@@ -243,7 +241,7 @@ function ChatScreen() {
               </div>
               <span className="text-xs text-gray-500">StratAI</span>
             </div>
-            <p className="text-sm text-gray-700">I've updated your code with a trailing stop. The EA will now adjust stops as price moves in your favor.</p>
+            <p className="text-sm text-gray-700">I've updated your logic with a trailing stop. It will now adjust stops as price moves in your favor.</p>
           </div>
         </motion.div>
 

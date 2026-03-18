@@ -12,7 +12,7 @@ export function Navigation() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const items = ['Features', 'Pricing', 'Docs', 'Blog', 'Contact'];
+  const items = ['Pricing', 'Docs', 'Blog', 'Contact'];
 
   // Close mobile menu on click outside
   useEffect(() => {
@@ -108,6 +108,22 @@ export function Navigation() {
     setMobileOpen(false);
   };
 
+  const pathname = location.pathname;
+  const isHomeActive = pathname === '/';
+  const isFeaturesActive = pathname.startsWith('/features');
+  const activeBySlug: Record<string, boolean> = {
+    pricing: pathname.startsWith('/pricing'),
+    docs: pathname.startsWith('/docs'),
+    blog: pathname.startsWith('/resources'),
+    contact: pathname.startsWith('/contact'),
+  };
+
+  const desktopLinkClass = (active: boolean) =>
+    `text-muted-foreground hover:text-primary transition-colors cursor-pointer text-sm font-medium ${active ? 'text-primary' : ''}`;
+
+  const mobileLinkClass = (active: boolean) =>
+    `px-4 py-3 text-foreground hover:bg-white/5 hover:text-primary transition-colors ${active ? 'bg-white/5 text-primary' : ''}`;
+
   return (
     <nav ref={navRef} className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       
@@ -121,25 +137,33 @@ export function Navigation() {
           <img 
             src={logo} 
             alt="StratAI" 
-            className="h-16 sm:h-18 lg:h-20 w-auto object-contain relative z-10" 
+            className="h-8 sm:h-9 lg:h-10 w-auto object-contain relative z-10" 
             decoding="async" 
             fetchPriority="high" 
           />
         </motion.div>
         
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-8 rounded-2xl bg-primary/5 ring-1 ring-primary/20 px-4 py-2">
           <motion.a
             href="#home"
             onClick={(e) => handleLinkClick(e, 'home')}
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-muted-foreground hover:text-primary transition-colors cursor-pointer text-sm font-medium"
+            className={desktopLinkClass(isHomeActive)}
+            aria-current={isHomeActive ? 'page' : undefined}
           >
             Home
           </motion.a>
           <DropdownMenu>
-            <DropdownMenuTrigger className="text-muted-foreground hover:text-primary text-sm font-medium">
-              Features
+            <DropdownMenuTrigger asChild>
+              <a
+                href="/features"
+                onClick={(e) => e.preventDefault()}
+                className={desktopLinkClass(isFeaturesActive)}
+                aria-current={isFeaturesActive ? 'page' : undefined}
+              >
+                Features
+              </a>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-card border-border">
               <DropdownMenuItem onClick={() => {
@@ -173,6 +197,7 @@ export function Navigation() {
           </DropdownMenu>
           {items.map((item, index) => {
             const slug = item.toLowerCase().trim().replace(/\s+/g, '-');
+            const active = activeBySlug[slug] ?? false;
             return (
               <motion.a
                 key={item}
@@ -181,7 +206,8 @@ export function Navigation() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: (index + 1) * 0.1 }}
-                className="text-muted-foreground hover:text-primary transition-colors cursor-pointer text-sm font-medium"
+                className={desktopLinkClass(active)}
+                aria-current={active ? 'page' : undefined}
               >
                 {item}
               </motion.a>
@@ -224,8 +250,9 @@ export function Navigation() {
             <div className="flex flex-col divide-y divide-border">
               <a
                 href="#home"
-                className="px-4 py-3 text-foreground hover:bg-white/5 hover:text-primary transition-colors"
+                className={mobileLinkClass(isHomeActive)}
                 onClick={(e) => handleLinkClick(e, 'home')}
+                aria-current={isHomeActive ? 'page' : undefined}
               >
                 Home
               </a>
@@ -233,24 +260,26 @@ export function Navigation() {
                 <div className="text-muted-foreground text-xs mb-2">Features</div>
                 <div className="flex flex-col gap-2">
                   <button className="text-foreground text-left hover:text-primary" onClick={() => { navigate('/features#planner'); setMobileOpen(false); }}>
-                    Trading Planner
+                    Strategy Planner
                   </button>
                   <button className="text-foreground text-left hover:text-primary" onClick={() => { navigate('/features#generator'); setMobileOpen(false); }}>
-                    EA Generator
+                    Code Engine
                   </button>
                   <button className="text-foreground text-left hover:text-primary" onClick={() => { navigate('/features#journal-analyzer'); setMobileOpen(false); }}>
-                    Journal Analyzer
+                    Performance Auditor
                   </button>
                 </div>
               </div>
               {items.map((item) => {
                 const slug = item.toLowerCase().trim().replace(/\s+/g, '-');
+                const active = activeBySlug[slug] ?? false;
                 return (
                   <a
                     key={item}
                     href={`#${slug}`}
-                    className="px-4 py-3 text-foreground hover:bg-white/5 hover:text-primary transition-colors"
+                    className={mobileLinkClass(active)}
                     onClick={(e) => handleLinkClick(e, slug)}
+                    aria-current={active ? 'page' : undefined}
                   >
                     {item}
                   </a>

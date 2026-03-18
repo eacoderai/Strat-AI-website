@@ -30,7 +30,7 @@ export default function Faq() {
             <AccordionItem value="support">
               <AccordionTrigger>Where can I get support?</AccordionTrigger>
               <AccordionContent>
-                Contact us via eacoderai@gmail.com or visit the Resources section for documentation and community links.
+                Contact us via support@stratai.com or visit the Resources section for documentation and community links.
               </AccordionContent>
             </AccordionItem>
           </Accordion>

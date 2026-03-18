@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from './ui/button';
 import { PhoneMockup } from './PhoneMockup';
 import { Check, Layout, Bot, FileText, Shield, Zap, TrendingUp, Code2, LineChart } from 'lucide-react';
+import stockIcon from '../assets/stock-icon.svg';
+import cryptoIcon from '../assets/crypto-icon.svg';
+import forexIcon from '../assets/forex-icon.svg';
 
 export function FeaturesSection() {
   const [activeTab, setActiveTab] = useState<'manual' | 'algo'>('manual');
@@ -22,8 +25,41 @@ export function FeaturesSection() {
             The AI Strategy Engine. <span className="text-primary">Two Ways to Build.</span>
           </motion.h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Works across trading, crypto, and quantitative strategies. Use natural language to create plans or executable code.
+            Your AI strategy engine — for stocks, crypto, and forex. Use natural language to create plans or executable logic.
           </p>
+        </div>
+
+        <div className="asset-examples grid md:grid-cols-3 gap-6 mb-16">
+          <div className="example rounded-2xl border border-border bg-card p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <img src={stockIcon} alt="" className="w-8 h-8 text-primary" />
+              <h3 className="text-foreground font-bold text-lg">Stocks</h3>
+            </div>
+            <p className="text-muted-foreground text-sm mb-3">
+              "Buy SPY when price crosses above 50 EMA with volume &gt; 1.5x average"
+            </p>
+            <span className="text-primary text-sm font-semibold">→ Pine Script + backtest-ready</span>
+          </div>
+          <div className="example rounded-2xl border border-border bg-card p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <img src={cryptoIcon} alt="" className="w-8 h-8 text-primary" />
+              <h3 className="text-foreground font-bold text-lg">Crypto</h3>
+            </div>
+            <p className="text-muted-foreground text-sm mb-3">
+              "Long SOL if 15m RSI &lt; 30 and funding rate &lt; -0.01%"
+            </p>
+            <span className="text-primary text-sm font-semibold">→ Binance API logic + risk filters</span>
+          </div>
+          <div className="example rounded-2xl border border-border bg-card p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <img src={forexIcon} alt="" className="w-8 h-8 text-primary" />
+              <h3 className="text-foreground font-bold text-lg">Forex</h3>
+            </div>
+            <p className="text-muted-foreground text-sm mb-3">
+              "Sell GBPUSD on London open breakout with ATR-based stop"
+            </p>
+            <span className="text-primary text-sm font-semibold">→ MQL5 + session filter</span>
+          </div>
         </div>
 
         {/* Tabs */}
@@ -122,8 +158,8 @@ export function FeaturesSection() {
                 </h3>
                 <ul className="space-y-4 mb-8">
                   {[
-                    { icon: <Code2 className="text-primary" />, text: 'MQL4, MQL5, Pine Script v5 support' },
-                    { icon: <TrendingUp className="text-primary" />, text: 'One-click download (.mq4, .mq5, .pine)' },
+                    { icon: <Code2 className="text-primary" />, text: 'Export to TradingView (stocks), MetaTrader (forex), or exchange APIs (crypto)' },
+                    { icon: <TrendingUp className="text-primary" />, text: 'Position sizing: % risk per trade' },
                     { icon: <LineChart className="text-primary" />, text: 'Backtesting preview (Engineer only)' },
                     { icon: <Zap className="text-primary" />, text: 'Code converter (Engineer only)' },
                   ].map((item, i) => (
