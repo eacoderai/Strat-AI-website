@@ -191,7 +191,7 @@ export default function FeaturesPage() {
             >
               <div className="relative">
                 <div className="absolute inset-0 bg-accent/20 blur-[120px] rounded-full" />
-                <PhoneMockup variant="code" className="w-[300px] sm:w-[340px] relative z-10" />
+                <PhoneMockup variant="code" className="w-[260px] sm:w-[340px] relative z-10" />
               </div>
             </motion.div>
           </div>

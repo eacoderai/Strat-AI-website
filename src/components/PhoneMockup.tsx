@@ -12,7 +12,7 @@ export function PhoneMockup({ variant = 'strategy', className = '' }: PhoneMocku
 
   return (
     <motion.div
-      className={`relative ${className}`}
+      className={`relative max-w-full ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       animate={{
@@ -24,13 +24,13 @@ export function PhoneMockup({ variant = 'strategy', className = '' }: PhoneMocku
       style={{ transformStyle: 'preserve-3d' }}
     >
       {/* Phone Frame */}
-      <div className="relative bg-black rounded-[3rem] p-3 shadow-2xl">
+      <div className="relative bg-black rounded-[3rem] p-2 sm:p-3 shadow-2xl">
         <div className="bg-white rounded-[2.5rem] overflow-hidden relative">
           {/* Notch */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-3xl z-10" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 sm:w-32 h-6 bg-black rounded-b-3xl z-10" />
           
           {/* Screen Content */}
-          <div className="h-[600px] bg-gradient-to-br from-purple-50 to-indigo-50 relative overflow-hidden">
+          <div className="h-[520px] sm:h-[600px] bg-gradient-to-br from-purple-50 to-indigo-50 relative overflow-hidden">
             {variant === 'strategy' && <StrategyFormScreen />}
             {variant === 'code' && <CodeGenerationScreen />}
             {variant === 'chat' && <ChatScreen />}

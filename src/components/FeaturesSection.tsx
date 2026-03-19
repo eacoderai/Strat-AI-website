@@ -130,7 +130,7 @@ export function FeaturesSection() {
               <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
                 <div className="relative group">
                   <div className="absolute inset-0 bg-accent/20 blur-[100px] rounded-full group-hover:scale-110 transition-transform" />
-                  <PhoneMockup variant="strategy" className="w-[280px] sm:w-[320px] relative z-10" />
+                  <PhoneMockup variant="strategy" className="w-[260px] sm:w-[320px] relative z-10" />
                 </div>
               </div>
             </motion.div>
@@ -146,7 +146,7 @@ export function FeaturesSection() {
               <div className="order-1 flex justify-center lg:justify-start">
                 <div className="relative group">
                   <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full group-hover:scale-110 transition-transform" />
-                  <PhoneMockup variant="code" className="w-[280px] sm:w-[320px] relative z-10" />
+                  <PhoneMockup variant="code" className="w-[260px] sm:w-[320px] relative z-10" />
                 </div>
               </div>
               <div className="order-2">

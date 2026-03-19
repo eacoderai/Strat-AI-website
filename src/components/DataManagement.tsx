@@ -92,7 +92,7 @@ export function DataManagement() {
             transition={{ duration: 0.8 }}
             className="flex justify-center lg:justify-end"
           >
-            <PhoneMockup variant="analysis" className="w-[280px] sm:w-[320px]" />
+            <PhoneMockup variant="analysis" className="w-[260px] sm:w-[320px]" />
           </motion.div>
         </div>
       </div>

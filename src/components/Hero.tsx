@@ -139,7 +139,7 @@ export function Hero() {
           <div className="relative">
             {/* Glow effect behind phone */}
             <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full scale-150 animate-pulse" />
-            <PhoneMockup variant="strategy" className="w-[280px] sm:w-[320px] lg:w-[350px] relative z-10" />
+            <PhoneMockup variant="strategy" className="w-[260px] sm:w-[320px] lg:w-[350px] relative z-10" />
           </div>
         </motion.div>
       </div>
