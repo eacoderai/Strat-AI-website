@@ -6,13 +6,13 @@
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "eacoderai.xyz" }],
       "destination": "https://getstratai.com/$1",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "www.eacoderai.xyz" }],
       "destination": "https://getstratai.com/$1",
-      "permanent": true
+      "statusCode": 301
     }
   ],
   "rewrites": [
