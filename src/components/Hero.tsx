@@ -11,8 +11,8 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-background">
       <Seo
-        title="StratAI – AI Strategy Engine | Describe. Generate. Execute."
-        description="Your AI strategy engine — for stocks, crypto, and forex. Describe your edge in plain English and generate executable logic for any market."
+        title="StratAI | AI Strategy Builder for Stocks, Crypto & Forex"
+        description="StratAI turns plain-English ideas into executable strategy logic for stocks, crypto, and forex. Build, backtest, and export in minutes."
         keywords="StratAI, AI strategy engine, strategy logic, stocks, crypto, forex, TradingView, MetaTrader, exchange APIs, Pine Script, MQL4, MQL5"
       />
       {/* Background decoration */}
@@ -87,11 +87,11 @@ export function Hero() {
           </div>
           
           <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6 leading-tight">
-            Generate strategy logic for any market
+            StratAI: strategy logic for any market
           </h1>
           
           <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-xl leading-relaxed">
-            Universal strategy engine. Your AI strategy builder — for stocks, crypto, and forex.
+            Your AI strategy builder — for stocks, crypto, and forex.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
