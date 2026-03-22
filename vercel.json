@@ -29,6 +29,10 @@
       "destination": "/googlee9a0ad004133adb7.html"
     },
     {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
