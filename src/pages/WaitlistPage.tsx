@@ -125,17 +125,17 @@ export default function WaitlistPage() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
-              className="relative hidden lg:block"
+              className="relative lg:block mt-12 lg:mt-0"
             >
               <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full" />
-              <div className="relative">
+              <div className="relative max-w-[320px] mx-auto lg:max-w-none">
                 <img 
                   src="/Apple iPhone 16 Pro Max (1320x2868)/Apple iPhone 16 Pro Max Screenshot 3.png" 
                   alt="StratAI App Screenshot" 
                   className="w-full relative z-10 rounded-[3rem] shadow-2xl"
                 />
-                <div className="absolute -bottom-6 -right-6 bg-accent text-accent-foreground px-6 py-4 rounded-2xl font-bold shadow-xl flex items-center gap-2 z-20">
-                  <Smartphone className="w-5 h-5" />
+                <div className="absolute -bottom-6 -right-6 bg-accent text-accent-foreground px-4 py-3 sm:px-6 sm:py-4 rounded-2xl font-bold shadow-xl flex items-center gap-2 z-20 text-sm sm:text-base">
+                  <Smartphone className="w-4 h-4 sm:w-5 h-5" />
                   App Launching Soon
                 </div>
               </div>
