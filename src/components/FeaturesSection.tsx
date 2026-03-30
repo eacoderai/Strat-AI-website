@@ -130,7 +130,7 @@ export function FeaturesSection() {
                 <div className="relative group">
                   <div className="absolute inset-0 bg-accent/20 blur-[100px] rounded-full group-hover:scale-110 transition-transform" />
                   <img 
-                    src="/Apple iPhone 16 Pro Max (1320x2868)/Apple iPhone 16 Pro Max Screenshot 1.png" 
+                    src="/Apple iPhone 16 Pro Max (1320x2868)/Apple iPhone 16 Pro Max Screenshot 2.png" 
                     alt="Manual Trading Plan Screenshot" 
                     className="w-[260px] sm:w-[320px] relative z-10 rounded-[3rem] shadow-2xl"
                   />
