@@ -128,42 +128,13 @@ export default function WaitlistPage() {
               className="relative hidden lg:block"
             >
               <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full" />
-              <div className="relative bg-card border border-border rounded-[3rem] p-8 shadow-2xl">
-                <div className="aspect-[9/19] rounded-[2rem] bg-background border border-border overflow-hidden relative">
-                   {/* Mock App Screen */}
-                   <div className="absolute top-0 left-0 w-full p-6 space-y-6">
-                      <div className="flex justify-between items-center">
-                        <div className="w-10 h-10 rounded-full bg-primary/20" />
-                        <div className="w-20 h-4 rounded-full bg-muted" />
-                      </div>
-                      <div className="space-y-2">
-                        <div className="w-full h-8 rounded-lg bg-muted animate-pulse" />
-                        <div className="w-2/3 h-8 rounded-lg bg-muted animate-pulse" />
-                      </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="aspect-square rounded-2xl bg-primary/10 border border-primary/20 p-4 flex flex-col justify-end">
-                           <div className="w-8 h-8 rounded-lg bg-primary/20 mb-2" />
-                           <div className="w-12 h-2 rounded-full bg-primary/40" />
-                        </div>
-                        <div className="aspect-square rounded-2xl bg-accent/10 border border-accent/20 p-4 flex flex-col justify-end">
-                           <div className="w-8 h-8 rounded-lg bg-accent/20 mb-2" />
-                           <div className="w-12 h-2 rounded-full bg-accent/40" />
-                        </div>
-                      </div>
-                      <div className="w-full h-32 rounded-2xl bg-card border border-border p-4">
-                        <div className="flex justify-between mb-4">
-                          <div className="w-16 h-4 rounded-full bg-muted" />
-                          <div className="w-12 h-4 rounded-full bg-primary/20" />
-                        </div>
-                        <div className="space-y-2">
-                          <div className="w-full h-2 rounded-full bg-muted" />
-                          <div className="w-full h-2 rounded-full bg-muted" />
-                          <div className="w-3/4 h-2 rounded-full bg-muted" />
-                        </div>
-                      </div>
-                   </div>
-                </div>
-                <div className="absolute -bottom-6 -right-6 bg-accent text-accent-foreground px-6 py-4 rounded-2xl font-bold shadow-xl flex items-center gap-2">
+              <div className="relative">
+                <img 
+                  src="/Apple iPhone 16 Pro Max (1320x2868)/Apple iPhone 16 Pro Max Screenshot 3.png" 
+                  alt="StratAI App Screenshot" 
+                  className="w-full relative z-10 rounded-[3rem] shadow-2xl"
+                />
+                <div className="absolute -bottom-6 -right-6 bg-accent text-accent-foreground px-6 py-4 rounded-2xl font-bold shadow-xl flex items-center gap-2 z-20">
                   <Smartphone className="w-5 h-5" />
                   App Launching Soon
                 </div>
