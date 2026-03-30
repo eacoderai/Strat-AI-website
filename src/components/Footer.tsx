@@ -50,7 +50,7 @@ export function Footer() {
               />
             </motion.div>
             <p className="text-muted-foreground text-sm mb-6 max-w-sm">
-              StratAI: The strategy layer for AI. Turn plain-language ideas into executable logic across domains.
+              StratAI App: The strategy layer for AI. Turn plain-language ideas into executable logic across domains.
             </p>
             <div className="flex gap-4">
               {[
