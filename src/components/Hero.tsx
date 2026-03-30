@@ -1,7 +1,6 @@
 import { motion } from 'motion/react';
 import { Button } from './ui/button';
 import { useNavigate } from 'react-router-dom';
-import { PhoneMockup } from './PhoneMockup';
 import { Check, Sparkles, Zap, Bot, Layout } from 'lucide-react';
 import Seo from './docs/Seo';
 
@@ -11,8 +10,8 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-background">
       <Seo
-        title="StratAI | AI Strategy Builder for Stocks, Crypto & Forex"
-        description="StratAI turns plain-English ideas into executable strategy logic for stocks, crypto, and forex. Build, backtest, and export in minutes."
+        title="StratAI App | AI Strategy Builder for Stocks, Crypto & Forex"
+        description="StratAI App turns plain-English ideas into executable strategy logic for stocks, crypto, and forex. Build, backtest, and export in minutes."
         keywords="StratAI, AI strategy engine, strategy logic, stocks, crypto, forex, TradingView, MetaTrader, exchange APIs, Pine Script, MQL4, MQL5"
       />
       {/* Background decoration */}
@@ -139,7 +138,11 @@ export function Hero() {
           <div className="relative">
             {/* Glow effect behind phone */}
             <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full scale-150 animate-pulse" />
-            <PhoneMockup variant="screenshot1" className="w-[260px] sm:w-[320px] lg:w-[350px] relative z-10" />
+            <img 
+              src="/Apple iPhone 16 Pro Max (1320x2868)/Apple iPhone 16 Pro Max Screenshot 1.png" 
+              alt="StratAI App Screenshot" 
+              className="w-[260px] sm:w-[320px] lg:w-[350px] relative z-10 rounded-[3rem] shadow-2xl"
+            />
           </div>
         </motion.div>
       </div>

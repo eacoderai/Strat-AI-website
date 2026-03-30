@@ -1,78 +1,61 @@
 import { motion } from 'motion/react';
-import { PhoneMockup } from './PhoneMockup';
-import { Shield, Lock, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Lock, Database, Server } from 'lucide-react';
 
 export function DataManagement() {
   return (
-    <section className="py-20 bg-gradient-to-b from-purple-50 to-white">
+    <section className="py-24 bg-card/30 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left - Content */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            {/* Decorative Icon */}
-            <motion.div
-              className="mb-8 inline-flex"
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center">
-                <Shield className="w-8 h-8 text-white" />
-              </div>
-            </motion.div>
-
-            <h2 className="text-gray-800 mb-6">
-              Secure & Reliable Code Conversion
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
+              <ShieldCheck className="w-4 h-4" />
+              Institutional-Grade Security
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-8">
+              Your Strategies. <span className="text-primary">Your Edge.</span> Secured.
             </h2>
-            
-            <p className="text-gray-600 mb-8">
-              Convert your existing strategy logic between MQL4, MQL5, Pine Script, and exchange APIs. Our AI preserves your rules while adapting to platform-specific requirements.
+            <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
+              We treat strategy logic like private keys. StratAI uses end-to-end encryption and decentralized storage patterns to ensure your edge remains yours.
             </p>
 
-            {/* Feature Points */}
-            <div className="space-y-4">
-              {[
-                'End-to-end encryption for all data',
-                'No trading credentials required',
-                'Code sanitization and security checks',
-                'GDPR & CCPA compliant',
-              ].map((point, index) => (
-                <motion.div
-                  key={point}
-                  className="flex items-center gap-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ x: 10 }}
-                >
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center flex-shrink-0">
-                    <CheckCircle2 className="w-4 h-4 text-white" />
-                  </div>
-                  <span className="text-gray-700">{point}</span>
-                </motion.div>
-              ))}
+            <div className="grid sm:grid-cols-2 gap-8 mb-10">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-xl bg-background border border-border flex items-center justify-center">
+                  <Lock className="w-6 h-6 text-primary" />
+                </div>
+                <h4 className="font-bold text-foreground">Zero-Knowledge Storage</h4>
+                <p className="text-muted-foreground text-sm">We can't see your strategies. They are encrypted before they ever hit our servers.</p>
+              </div>
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-xl bg-background border border-border flex items-center justify-center">
+                  <Database className="w-6 h-6 text-primary" />
+                </div>
+                <h4 className="font-bold text-foreground">Private Database</h4>
+                <p className="text-muted-foreground text-sm">No data sharing. Your trade history and logic are isolated in your own secure silo.</p>
+              </div>
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-xl bg-background border border-border flex items-center justify-center">
+                  <Server className="w-6 h-6 text-primary" />
+                </div>
+                <h4 className="font-bold text-foreground">AWS Secure Cloud</h4>
+                <p className="text-muted-foreground text-sm">Hosted on highly-available, SOC2-compliant infrastructure for 99.9% uptime.</p>
+              </div>
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-xl bg-background border border-border flex items-center justify-center">
+                  <ShieldCheck className="w-6 h-6 text-primary" />
+                </div>
+                <h4 className="font-bold text-foreground">Audit Trails</h4>
+                <p className="text-muted-foreground text-sm">Every access point is logged and monitored for unauthorized activity.</p>
+              </div>
             </div>
 
-            {/* Security Badge */}
             <motion.div
-              className="mt-8 inline-flex items-center gap-3 bg-white rounded-2xl px-6 py-4 shadow-lg border border-gray-100"
-              whileHover={{ scale: 1.05 }}
-            >
-              <Lock className="w-8 h-8 text-green-600" />
-              <div>
-                <p className="text-sm text-gray-800">Bank-Grade Security</p>
-                <p className="text-xs text-gray-500">Your strategies are safe with us</p>
-              </div>
-            </motion.div>
-
-            {/* Disclaimer */}
-            <motion.div
-              className="mt-6 bg-yellow-50 border border-yellow-200 rounded-xl p-4"
+              className="p-4 rounded-xl bg-yellow-500/10 border border-yellow-500/20"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -84,7 +67,7 @@ export function DataManagement() {
             </motion.div>
           </motion.div>
 
-          {/* Right - Phone Mockup */}
+          {/* Right - App Screenshot */}
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -92,10 +75,13 @@ export function DataManagement() {
             transition={{ duration: 0.8 }}
             className="flex justify-center lg:justify-end"
           >
-            <PhoneMockup variant="screenshot3" className="w-[260px] sm:w-[320px]" />
+            <img 
+              src="/Apple iPhone 16 Pro Max (1320x2868)/Apple iPhone 16 Pro Max Screenshot 3.png" 
+              alt="StratAI App Performance Auditor Screenshot" 
+              className="w-[260px] sm:w-[320px] rounded-[3rem] shadow-2xl"
+            />
           </motion.div>
         </div>
       </div>
     </section>
   );
-}

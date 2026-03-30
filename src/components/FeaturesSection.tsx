@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from './ui/button';
-import { PhoneMockup } from './PhoneMockup';
 import { Check, Layout, Bot, FileText, Shield, Zap, TrendingUp, Code2, LineChart } from 'lucide-react';
 import stockIcon from '../assets/stock-icon.svg';
 import cryptoIcon from '../assets/crypto-icon.svg';
@@ -130,7 +129,11 @@ export function FeaturesSection() {
               <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
                 <div className="relative group">
                   <div className="absolute inset-0 bg-accent/20 blur-[100px] rounded-full group-hover:scale-110 transition-transform" />
-                  <PhoneMockup variant="screenshot1" className="w-[260px] sm:w-[320px] relative z-10" />
+                  <img 
+                    src="/Apple iPhone 16 Pro Max (1320x2868)/Apple iPhone 16 Pro Max Screenshot 1.png" 
+                    alt="Manual Trading Plan Screenshot" 
+                    className="w-[260px] sm:w-[320px] relative z-10 rounded-[3rem] shadow-2xl"
+                  />
                 </div>
               </div>
             </motion.div>
@@ -146,7 +149,11 @@ export function FeaturesSection() {
               <div className="order-1 flex justify-center lg:justify-start">
                 <div className="relative group">
                   <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full group-hover:scale-110 transition-transform" />
-                  <PhoneMockup variant="screenshot2" className="w-[260px] sm:w-[320px] relative z-10" />
+                  <img 
+                    src="/Apple iPhone 16 Pro Max (1320x2868)/Apple iPhone 16 Pro Max Screenshot 2.png" 
+                    alt="Algo Trading Code Screenshot" 
+                    className="w-[260px] sm:w-[320px] relative z-10 rounded-[3rem] shadow-2xl"
+                  />
                 </div>
               </div>
               <div className="order-2">
