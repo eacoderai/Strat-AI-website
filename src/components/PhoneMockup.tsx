@@ -3,12 +3,33 @@ import { useState } from 'react';
 import { Code2, MessageSquare, TrendingUp, Zap, FileCode, Activity } from 'lucide-react';
 
 interface PhoneMockupProps {
-  variant?: 'strategy' | 'code' | 'chat' | 'analysis';
+  variant?: 'strategy' | 'code' | 'chat' | 'analysis' | 'screenshot1' | 'screenshot2' | 'screenshot3';
   className?: string;
 }
 
 export function PhoneMockup({ variant = 'strategy', className = '' }: PhoneMockupProps) {
   const [isHovered, setIsHovered] = useState(false);
+
+  const getScreenContent = () => {
+    switch (variant) {
+      case 'screenshot1':
+        return <img src="/Apple iPhone 16 Pro Max (1320x2868)/Apple iPhone 16 Pro Max Screenshot 1.png" alt="App Screenshot 1" className="w-full h-full object-cover" />;
+      case 'screenshot2':
+        return <img src="/Apple iPhone 16 Pro Max (1320x2868)/Apple iPhone 16 Pro Max Screenshot 2.png" alt="App Screenshot 2" className="w-full h-full object-cover" />;
+      case 'screenshot3':
+        return <img src="/Apple iPhone 16 Pro Max (1320x2868)/Apple iPhone 16 Pro Max Screenshot 3.png" alt="App Screenshot 3" className="w-full h-full object-cover" />;
+      case 'strategy':
+        return <StrategyFormScreen />;
+      case 'code':
+        return <CodeGenerationScreen />;
+      case 'chat':
+        return <ChatScreen />;
+      case 'analysis':
+        return <AnalysisScreen />;
+      default:
+        return <StrategyFormScreen />;
+    }
+  };
 
   return (
     <motion.div
@@ -31,10 +52,7 @@ export function PhoneMockup({ variant = 'strategy', className = '' }: PhoneMocku
           
           {/* Screen Content */}
           <div className="h-[520px] sm:h-[600px] bg-gradient-to-br from-purple-50 to-indigo-50 relative overflow-hidden">
-            {variant === 'strategy' && <StrategyFormScreen />}
-            {variant === 'code' && <CodeGenerationScreen />}
-            {variant === 'chat' && <ChatScreen />}
-            {variant === 'analysis' && <AnalysisScreen />}
+            {getScreenContent()}
           </div>
         </div>
       </div>
