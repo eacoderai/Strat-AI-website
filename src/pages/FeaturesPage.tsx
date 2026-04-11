@@ -1,10 +1,33 @@
 import { motion } from 'motion/react';
 import { Layout, Bot, CheckCircle2, Shield, Zap, Code2, LineChart, FileText, Download, Brain, Percent, BarChart3, TrendingUp } from 'lucide-react';
 import { Button } from '../components/ui/button';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function FeaturesPage() {
   const navigate = useNavigate();
+  const manualPlannerDemoRef = useRef<HTMLDivElement | null>(null);
+  const [manualPlannerDemoSrc, setManualPlannerDemoSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    const node = manualPlannerDemoRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setManualPlannerDemoSrc(
+            'https://www.youtube-nocookie.com/embed/3iAd3jja5SY?autoplay=1&mute=1&playsinline=1&rel=0'
+          );
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2, rootMargin: '200px 0px' }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="bg-background min-h-screen pt-3 pb-3">
@@ -337,17 +360,25 @@ export default function FeaturesPage() {
             <p className="text-muted-foreground">Watch how easily you can go from an idea to a trade-ready strategy.</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 mt-3 mb-3 -ml-2.5 -mr-2.5">
-            <div className="aspect-video rounded-3xl bg-card border border-border overflow-hidden">
-              <iframe 
-                width="100%" 
-                height="100%" 
-                src="https://www.youtube.com/embed/3iAd3jja5SY?autoplay=1&mute=1&playsinline=1&rel=0" 
-                title="Manual Planner Demo" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen
-                className="rounded-3xl"
-              />
+            <div
+              ref={manualPlannerDemoRef}
+              className="aspect-video rounded-3xl bg-card border border-border overflow-hidden"
+            >
+              {manualPlannerDemoSrc ? (
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={manualPlannerDemoSrc}
+                  title="Manual Planner Demo"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                  Loading demo…
+                </div>
+              )}
             </div>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}

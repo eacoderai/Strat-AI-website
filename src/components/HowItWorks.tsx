@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { MessageSquareText, Zap, Rocket } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 const steps = [
   {
@@ -23,6 +24,29 @@ const steps = [
 ];
 
 export function HowItWorks() {
+  const demoVideoRef = useRef<HTMLDivElement | null>(null);
+  const [demoVideoSrc, setDemoVideoSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    const node = demoVideoRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setDemoVideoSrc(
+            'https://www.youtube-nocookie.com/embed/3iAd3jja5SY?autoplay=1&mute=1&playsinline=1&rel=0'
+          );
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2, rootMargin: '200px 0px' }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="how-it-works" className="py-24 bg-card relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -79,16 +103,25 @@ export function HowItWorks() {
         </div>
 
         <div className="mt-16 flex justify-center">
-          <div className="w-full max-w-3xl aspect-video rounded-3xl overflow-hidden border border-border shadow-2xl">
-            <iframe 
-              width="100%" 
-              height="100%" 
-              src="https://www.youtube.com/embed/3iAd3jja5SY?autoplay=1&mute=1&playsinline=1&rel=0" 
-              title="StratAI Demo Video" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowFullScreen
-            />
+          <div
+            ref={demoVideoRef}
+            className="w-full max-w-3xl aspect-video rounded-3xl overflow-hidden border border-border shadow-2xl"
+          >
+            {demoVideoSrc ? (
+              <iframe
+                width="100%"
+                height="100%"
+                src={demoVideoSrc}
+                title="StratAI Demo Video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-muted-foreground">
+                Loading demo…
+              </div>
+            )}
           </div>
         </div>
       </div>
