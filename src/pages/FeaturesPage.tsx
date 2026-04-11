@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Layout, Bot, CheckCircle2, Shield, Zap, Code2, LineChart, FileText, Download, Brain, Percent, BarChart3 } from 'lucide-react';
+import { Layout, Bot, CheckCircle2, Shield, Zap, Code2, LineChart, FileText, Download, Brain, Percent, BarChart3, TrendingUp } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { useNavigate } from 'react-router-dom';
 
@@ -344,13 +344,162 @@ export default function FeaturesPage() {
               <h4 className="text-foreground font-bold mb-2">Manual Planner Demo</h4>
               <p className="text-muted-foreground text-sm text-center">Watch how to generate a 5-page trading plan in 15 seconds.</p>
             </div>
-            <div className="aspect-video rounded-3xl bg-card border border-border flex flex-col items-center justify-center p-8 group cursor-pointer hover:border-accent/50 transition-colors">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="aspect-video rounded-3xl bg-card border border-border flex flex-col items-center justify-center p-8 group cursor-pointer hover:border-accent/50 transition-colors"
+            >
               <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 <Code2 className="w-8 h-8 text-accent" />
               </div>
               <h4 className="text-foreground font-bold mb-2">Code Engine Demo</h4>
               <p className="text-muted-foreground text-sm text-center">See a plain-language strategy become executable code.</p>
-            </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* AI Chat Bot Section */}
+        <div id="chatbot" className="mb-32">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-500 text-sm font-medium mb-6">
+                <Bot className="w-4 h-4" />
+                AI Chat Bot
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
+                Your Personal <span className="text-purple-500">AI Trading Assistant.</span>
+              </h2>
+              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+                Get instant answers, market insights, and strategy refinement directly from our AI.
+              </p>
+              
+              <div className="space-y-6 mb-10">
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center shrink-0">
+                    <Zap className="w-6 h-6 text-purple-500" />
+                  </div>
+                  <div>
+                    <h4 className="text-foreground font-bold mb-1">Instant Answers</h4>
+                    <p className="text-muted-foreground">Get immediate responses to your trading questions and queries.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center shrink-0">
+                    <TrendingUp className="w-6 h-6 text-purple-500" />
+                  </div>
+                  <div>
+                    <h4 className="text-foreground font-bold mb-1">Market Insights</h4>
+                    <p className="text-muted-foreground">Receive real-time market analysis and trend predictions.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center shrink-0">
+                    <Code2 className="w-6 h-6 text-purple-500" />
+                  </div>
+                  <div>
+                    <h4 className="text-foreground font-bold mb-1">Strategy Optimization</h4>
+                    <p className="text-muted-foreground">Get AI-driven suggestions to refine and improve your trading strategies.</p>
+                  </div>
+                </div>
+              </div>
+
+              <Button size="lg" className="bg-purple-500 hover:bg-purple-600 rounded-xl" onClick={() => navigate('/waitlist')}>
+                Chat with AI Now
+              </Button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="bg-card border border-border rounded-3xl p-8 shadow-2xl relative overflow-hidden"
+            >
+              <div className="relative">
+                <div className="absolute inset-0 bg-purple-500/20 blur-[120px] rounded-full" />
+                <img 
+                  src="/Apple iPhone 16 Pro Max (1320x2868)/AI Chat Bot Screenshot.png" 
+                  alt="AI Chat Bot Screenshot" 
+                  className="w-[260px] sm:w-[340px] relative z-10 rounded-[3rem] shadow-2xl"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* AI Chat Bot Section */}
+        <div id="chatbot" className="mb-32">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-500 text-sm font-medium mb-6">
+                <Bot className="w-4 h-4" />
+                AI Chat Bot
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
+                Your Personal <span className="text-purple-500">AI Trading Assistant.</span>
+              </h2>
+              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+                Get instant answers, market insights, and strategy refinement directly from our AI.
+              </p>
+              
+              <div className="space-y-6 mb-10">
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center shrink-0">
+                    <Zap className="w-6 h-6 text-purple-500" />
+                  </div>
+                  <div>
+                    <h4 className="text-foreground font-bold mb-1">Instant Answers</h4>
+                    <p className="text-muted-foreground">Get immediate responses to your trading questions and queries.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center shrink-0">
+                    <TrendingUp className="w-6 h-6 text-purple-500" />
+                  </div>
+                  <div>
+                    <h4 className="text-foreground font-bold mb-1">Market Insights</h4>
+                    <p className="text-muted-foreground">Receive real-time market analysis and trend predictions.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center shrink-0">
+                    <Code2 className="w-6 h-6 text-purple-500" />
+                  </div>
+                  <div>
+                    <h4 className="text-foreground font-bold mb-1">Strategy Optimization</h4>
+                    <p className="text-muted-foreground">Get AI-driven suggestions to refine and improve your trading strategies.</p>
+                  </div>
+                </div>
+              </div>
+
+              <Button size="lg" className="bg-purple-500 hover:bg-purple-600 rounded-xl" onClick={() => navigate('/waitlist')}>
+                Chat with AI Now
+              </Button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="bg-card border border-border rounded-3xl p-8 shadow-2xl relative overflow-hidden"
+            >
+              <div className="relative">
+                <div className="absolute inset-0 bg-purple-500/20 blur-[120px] rounded-full" />
+                <img 
+                  src="/Apple iPhone 16 Pro Max (1320x2868)/AI Chat Bot Screenshot.png" 
+                  alt="AI Chat Bot Screenshot" 
+                  className="w-[260px] sm:w-[340px] relative z-10 rounded-[3rem] shadow-2xl"
+                />
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>

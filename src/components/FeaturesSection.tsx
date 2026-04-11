@@ -186,6 +186,56 @@ export function FeaturesSection() {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* AI Chat Bot Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="mt-24 grid lg:grid-cols-2 gap-12 items-center"
+        >
+          <div className="order-2 lg:order-1">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-500 text-sm font-medium mb-6">
+              AI Chat Bot
+            </div>
+            <h3 className="text-3xl font-bold text-foreground mb-6">
+              Your Personal AI Trading Assistant.
+            </h3>
+            <p className="text-lg sm:text-xl text-muted-foreground mb-8">
+              Get instant answers, market insights, and strategy refinement directly from our AI.
+            </p>
+            <ul className="space-y-4 mb-8">
+              {[
+                { icon: <Zap className="text-purple-500" />, text: 'Instant answers to trading questions' },
+                { icon: <TrendingUp className="text-purple-500" />, text: 'Market analysis and trend predictions' },
+                { icon: <Code2 className="text-purple-500" />, text: 'Strategy optimization suggestions' },
+                { icon: <FileText className="text-purple-500" />, text: 'Educational content and tutorials' },
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                  <div className="mt-1">{item.icon}</div>
+                  <span>{item.text}</span>
+                </li>
+              ))}
+            </ul>
+            <Button 
+              onClick={() => navigate('/waitlist')}
+              className="bg-purple-500 hover:bg-purple-600 text-white rounded-xl px-8 py-6 h-auto text-lg font-semibold"
+            >
+              Chat with AI Now
+            </Button>
+          </div>
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+            <div className="relative group">
+              <div className="absolute inset-0 bg-purple-500/20 blur-[100px] rounded-full group-hover:scale-110 transition-transform" />
+              <img 
+                src="/Apple iPhone 16 Pro Max (1320x2868)/AI Chat Bot Screenshot.png" 
+                alt="AI Chat Bot Screenshot" 
+                className="w-[260px] sm:w-[320px] relative z-10 rounded-[3rem] shadow-2xl"
+              />
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
