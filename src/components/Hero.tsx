@@ -10,9 +10,21 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-[10px] pb-[10px] overflow-hidden bg-background">
       <Seo
-        title="StratAI App | AI Strategy Builder for Stocks, Crypto & Forex"
+        title="StratAI - AI Strategy Builder"
         description="StratAI App turns plain-English ideas into executable strategy logic for stocks, crypto, and forex. Build, backtest, and export in minutes."
         keywords="StratAI, AI strategy engine, strategy logic, stocks, crypto, forex, TradingView, MetaTrader, exchange APIs, Pine Script, MQL4, MQL5"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "StratAI",
+          "url": "https://getstratai.com",
+          "logo": "https://getstratai.com/StratAI%20Logo.svg",
+          "sameAs": [
+            "https://twitter.com/getstratai",
+            "https://www.linkedin.com/company/getstratai",
+            "https://www.youtube.com/@getstratai"
+          ]
+        }}
       />
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -86,7 +98,7 @@ export function Hero() {
           </div>
           
           <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6 leading-tight">
-            StratAI: strategy logic for any market
+            StratAI - AI Trading Strategy Builder
           </h1>
           
           <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-xl leading-relaxed">

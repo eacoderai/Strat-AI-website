@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export default function Seo({ title, description, keywords }: { title: string; description: string; keywords?: string }) {
+export default function Seo({ title, description, keywords, schema }: { title: string; description: string; keywords?: string; schema?: Record<string, any> }) {
   useEffect(() => {
     document.title = title;
     const meta = document.querySelector('meta[name="description"]') as HTMLMetaElement | null;
@@ -13,7 +13,7 @@ export default function Seo({ title, description, keywords }: { title: string; d
       document.head.appendChild(m);
     }
     if (keywords) {
-      const k = document.querySelector('meta[name=\"keywords\"]') as HTMLMetaElement | null;
+      const k = document.querySelector('meta[name="keywords"]') as HTMLMetaElement | null;
       if (k) {
         k.setAttribute('content', keywords);
       } else {
@@ -23,6 +23,16 @@ export default function Seo({ title, description, keywords }: { title: string; d
         document.head.appendChild(mk);
       }
     }
-  }, [title, description]);
+
+    if (schema) {
+      let script = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement | null;
+      if (!script) {
+        script = document.createElement('script');
+        script.setAttribute('type', 'application/ld+json');
+        document.head.appendChild(script);
+      }
+      script.textContent = JSON.stringify(schema);
+    }
+  }, [title, description, keywords, schema]);
   return null;
 }
