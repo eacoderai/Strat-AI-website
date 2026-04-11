@@ -193,6 +193,15 @@ export function Navigation() {
                   navigate('/features#journal-analyzer');
                 }
               }}>Performance Auditor</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => {
+                if (location.pathname === '/features') {
+                  const el = document.getElementById('chatbot');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  else window.location.hash = 'chatbot';
+                } else {
+                  navigate('/features#chatbot');
+                }
+              }}>AI Chat Bot</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
           {items.map((item, index) => {
@@ -267,6 +276,9 @@ export function Navigation() {
                   </button>
                   <button className="text-foreground text-left hover:text-primary" onClick={() => { navigate('/features#journal-analyzer'); setMobileOpen(false); }}>
                     Performance Auditor
+                  </button>
+                  <button className="text-foreground text-left hover:text-primary" onClick={() => { navigate('/features#chatbot'); setMobileOpen(false); }}>
+                    AI Chat Bot
                   </button>
                 </div>
               </div>

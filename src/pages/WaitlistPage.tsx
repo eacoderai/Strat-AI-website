@@ -39,7 +39,7 @@ export default function WaitlistPage() {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <main className="pt-32 pb-20 px-6">
+      <main className="pt-3 pb-3 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div

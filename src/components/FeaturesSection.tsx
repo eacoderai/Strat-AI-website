@@ -229,7 +229,7 @@ export function FeaturesSection() {
             <div className="relative group">
               <div className="absolute inset-0 bg-purple-500/20 blur-[100px] rounded-full group-hover:scale-110 transition-transform" />
               <img 
-                src="/Apple iPhone 16 Pro Max (1320x2868)/AI Chat Bot Screenshot.png" 
+                src="/Apple iPhone 16 Pro Max (1320x2868)/Chat mockup screenshot.png" 
                 alt="AI Chat Bot Screenshot" 
                 className="w-[260px] sm:w-[320px] relative z-10 rounded-[3rem] shadow-2xl"
               />
