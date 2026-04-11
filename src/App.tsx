@@ -8,6 +8,7 @@ import { SocialProof } from './components/SocialProof';
 import { FinalCTA } from './components/FinalCTA';
 import { Footer } from './components/Footer';
 import { Pricing } from './components/Pricing';
+import { MarketData } from './components/MarketData';
 import TradingPlannerSection from './components/TradingPlannerSection';
 import JournalAnalyzerSection from './components/JournalAnalyzerSection';
 import PricingPage from './pages/PricingPage';
@@ -58,6 +59,7 @@ export default function App() {
           element={
             <>
               <Hero />
+              <MarketData />
               <HowItWorks />
               <FeaturesSection />
               <SocialProof />

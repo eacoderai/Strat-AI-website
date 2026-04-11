@@ -7,12 +7,13 @@ const plans = [
   {
     name: 'Free',
     price: '0',
-    description: 'Start with core strategy tools.',
+    description: 'Explore the basics and generate a couple strategies each month.',
     features: [
-      '1 strategy (plan OR code)',
-      'MQL5 support',
-      'Basic AI engine',
-      'No credit card required',
+      '2 strategy generations / month',
+      'MetaTrader 5 (MQL5) only',
+      'Manual trading plans',
+      'AI Chat Assistant locked',
+      'Code converter locked',
     ],
     cta: 'Start Free',
     variant: 'outline',
@@ -20,31 +21,36 @@ const plans = [
   },
   {
     name: 'Pro',
-    price: '19',
-    description: 'Generate unlimited strategy code and plans.',
+    price: '24',
+    description: 'Unlock more platforms, AI chat, converter, and full backtesting tools.',
     features: [
-      'Unlimited strategies',
-      'MQL4 & MQL5 support',
-      'Basic backtesting',
+      '10 strategy generations / month',
+      'MQL4, MQL5, Pine Script, QuantConnect, cTrader',
+      'Crypto automation (Binance / Bybit / 3Commas / TV alerts)',
+      'AI Chat Assistant (standard)',
+      'Code converter',
+      'Downloads enabled',
+      'Backtest UI + performance metrics',
       'Save last 3 versions',
-      'Priority support',
+      'Support response within 48h',
     ],
-    cta: 'Get Pro',
+    cta: 'Upgrade to Pro',
     variant: 'default',
     popular: true,
     icon: <Check className="w-6 h-6 text-primary" />,
   },
   {
     name: 'Elite',
-    price: '29',
-    description: 'Full access + Performance Auditor + converter.',
+    price: '59',
+    description: 'Unlimited usage plus journaling, audits, and priority support.',
     features: [
       'Everything in Pro',
-      'Pine Script support',
-      'Advanced backtesting + AI summary',
-      'Code converter',
-      'Performance Auditor',
-      'AI strategy recommendations',
+      'Unlimited strategy generations',
+      'Unlimited version history',
+      'Trading journal + AI reports',
+      'Professional strategy audit',
+      'AI Chat Assistant (priority)',
+      'Support response within 12h',
     ],
     cta: 'Get Elite',
     variant: 'default',
@@ -123,27 +129,6 @@ export function Pricing() {
               </Button>
             </motion.div>
           ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <Button
-            variant="ghost"
-            className="text-primary hover:text-primary/80 font-semibold gap-2"
-            onClick={() => navigate('/pricing')}
-          >
-            View Full Feature Comparison →
-          </Button>
-        </motion.div>
-        
-        <div className="mt-16 text-center">
-          <p className="text-muted-foreground">
-            Save 15% with annual billing. <span className="text-primary font-semibold cursor-pointer" onClick={() => navigate('/pricing')}>View full comparison table →</span>
-          </p>
         </div>
       </div>
     </section>

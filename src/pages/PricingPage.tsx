@@ -8,9 +8,9 @@ const comparisonData = [
   {
     category: "Core Features",
     features: [
-      { name: "Monthly Strategies", free: "1", pro: "Up to 10", elite: "Unlimited" },
+      { name: "Strategy generations / month", free: "2", pro: "10", elite: "Unlimited" },
       { name: "Strategy Planner (Manual)", free: true, pro: true, elite: true },
-      { name: "Code Engine (Algo)", free: true, pro: true, elite: true },
+      { name: "Code Engine (Algo)", free: false, pro: true, elite: true },
       { name: "Risk Management Tools", free: true, pro: true, elite: true },
       { name: "Psychology Checklist", free: true, pro: true, elite: true },
     ]
@@ -20,26 +20,28 @@ const comparisonData = [
     features: [
       { name: "MQL5 Support", free: true, pro: true, elite: true },
       { name: "MQL4 Support", free: false, pro: true, elite: true },
-      { name: "Pine Script v5", free: false, pro: false, elite: true },
+      { name: "Pine Script", free: false, pro: true, elite: true },
+      { name: "QuantConnect", free: false, pro: true, elite: true },
+      { name: "cTrader", free: false, pro: true, elite: true },
+      { name: "Crypto automation", free: false, pro: true, elite: true },
     ]
   },
   {
     category: "Advanced Tools",
     features: [
-      { name: "Basic Backtesting", free: false, pro: true, elite: true },
-      { name: "Advanced Backtesting + AI Summary", free: false, pro: false, elite: true },
+      { name: "Backtest UI + performance metrics", free: false, pro: true, elite: true },
       { name: "Save Strategy Versions", free: false, pro: "Last 3", elite: "Unlimited" },
-      { name: "Code Converter (MQL4 to MQL5)", free: false, pro: false, elite: true },
-      { name: "Performance Auditor", free: false, pro: false, elite: true },
-      { name: "AI Strategy Recommendations", free: false, pro: false, elite: true },
+      { name: "Downloads enabled", free: false, pro: true, elite: true },
+      { name: "Code converter", free: false, pro: true, elite: true },
+      { name: "AI Chat Assistant", free: false, pro: "Standard", elite: "Priority" },
+      { name: "Trading journal + AI reports", free: false, pro: false, elite: true },
+      { name: "Professional strategy audit", free: false, pro: false, elite: true },
     ]
   },
   {
     category: "Support",
     features: [
-      { name: "Community Access", free: true, pro: true, elite: true },
-      { name: "Standard Support", free: true, pro: true, elite: true },
-      { name: "Priority Support", free: false, pro: false, elite: true },
+      { name: "Support response time", free: "Community only", pro: "Within 48h", elite: "Within 12h" },
     ]
   }
 ];
@@ -55,11 +57,11 @@ const faqs = [
   },
   {
     question: "What’s ‘Manual Re-analysis’?",
-    answer: "Engineer users can upload execution journals. Our AI analyzes performance, patterns, and helps you refine rules."
+    answer: "Elite users can upload execution journals. Our AI analyzes performance, patterns, and helps you refine rules."
   },
   {
     question: "Is there a long-term commitment?",
-    answer: "No. Our Builder and Engineer plans are month-to-month. You can upgrade, downgrade, or cancel at any time."
+    answer: "No. Plans are month-to-month. You can upgrade, downgrade, or cancel at any time."
   }
 ];
 
@@ -68,7 +70,7 @@ export default function PricingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div className="bg-background min-h-screen pt-32 pb-24">
+    <div className="bg-background min-h-screen pt-3 pb-3">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-20">
@@ -96,11 +98,11 @@ export default function PricingPage() {
                 </th>
                 <th className="py-6 px-4 text-center w-1/4 bg-primary/5 rounded-t-3xl">
                   <div className="text-primary font-bold text-xl mb-1">Pro</div>
-                  <div className="text-muted-foreground text-sm font-normal">$19/mo</div>
+                  <div className="text-muted-foreground text-sm font-normal">$24/mo</div>
                 </th>
                 <th className="py-6 px-4 text-center w-1/4">
                   <div className="text-accent font-bold text-xl mb-1">Elite</div>
-                  <div className="text-muted-foreground text-sm font-normal">$29/mo</div>
+                  <div className="text-muted-foreground text-sm font-normal">$59/mo</div>
                 </th>
               </tr>
             </thead>
@@ -127,13 +129,13 @@ export default function PricingPage() {
               <tr>
                 <td className="py-10 px-4"></td>
                 <td className="py-10 px-4 text-center">
-                  <Button variant="outline" className="w-full" onClick={() => navigate('/waitlist')}>Get Starter</Button>
+                  <Button variant="outline" className="w-full" onClick={() => navigate('/waitlist')}>Start Free</Button>
                 </td>
                 <td className="py-10 px-4 text-center bg-primary/5 rounded-b-3xl">
-                  <Button className="w-full bg-primary" onClick={() => navigate('/waitlist?plan=builder')}>Get Builder</Button>
+                  <Button className="w-full bg-primary" onClick={() => navigate('/waitlist?plan=pro')}>Upgrade to Pro</Button>
                 </td>
                 <td className="py-10 px-4 text-center">
-                  <Button className="w-full bg-accent hover:bg-accent/90" onClick={() => navigate('/waitlist?plan=engineer')}>Get Engineer</Button>
+                  <Button className="w-full bg-accent hover:bg-accent/90" onClick={() => navigate('/waitlist?plan=elite')}>Get Elite</Button>
                 </td>
               </tr>
             </tfoot>

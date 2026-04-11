@@ -8,7 +8,7 @@ export function Hero() {
   const navigate = useNavigate();
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-background">
+    <section className="relative min-h-screen flex items-center pt-[10px] pb-[10px] overflow-hidden bg-background">
       <Seo
         title="StratAI App | AI Strategy Builder for Stocks, Crypto & Forex"
         description="StratAI App turns plain-English ideas into executable strategy logic for stocks, crypto, and forex. Build, backtest, and export in minutes."

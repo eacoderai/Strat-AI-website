@@ -7,7 +7,7 @@ export default function FeaturesPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-background min-h-screen pt-32 pb-24">
+    <div className="bg-background min-h-screen pt-3 pb-3">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-24">
@@ -191,7 +191,7 @@ export default function FeaturesPage() {
               <div className="relative">
                 <div className="absolute inset-0 bg-accent/20 blur-[120px] rounded-full" />
                 <img 
-                  src="/Apple iPhone 16 Pro Max (1320x2868)/Apple iPhone 16 Pro Max Screenshot 2.png" 
+                  src="/Apple iPhone 16 Pro Max (1320x2868)/Samsung Galaxy S21 Ultra Screenshot 2.png" 
                   alt="Algo Trading Code Screenshot" 
                   className="w-[260px] sm:w-[340px] relative z-10 rounded-[3rem] shadow-2xl"
                 />
