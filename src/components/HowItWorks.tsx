@@ -77,6 +77,20 @@ export function HowItWorks() {
             </motion.div>
           ))}
         </div>
+
+        <div className="mt-16 flex justify-center">
+          <div className="w-full max-w-3xl aspect-video rounded-3xl overflow-hidden border border-border shadow-2xl">
+            <iframe 
+              width="100%" 
+              height="100%" 
+              src="https://www.youtube.com/embed/3iAd3jja5SY?autoplay=1&mute=1" 
+              title="StratAI Demo Video" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+            />
+          </div>
+        </div>
       </div>
       
       {/* Background decoration */}

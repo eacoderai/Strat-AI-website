@@ -337,12 +337,17 @@ export default function FeaturesPage() {
             <p className="text-muted-foreground">Watch how easily you can go from an idea to a trade-ready strategy.</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 mt-3 mb-3 -ml-2.5 -mr-2.5">
-            <div className="aspect-video rounded-3xl bg-card border border-border flex flex-col items-center justify-center p-8 group cursor-pointer hover:border-primary/50 transition-colors">
-              <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Zap className="w-8 h-8 text-primary" />
-              </div>
-              <h4 className="text-foreground font-bold mb-2">Manual Planner Demo</h4>
-              <p className="text-muted-foreground text-sm text-center">Watch how to generate a 5-page trading plan in 15 seconds.</p>
+            <div className="aspect-video rounded-3xl bg-card border border-border overflow-hidden">
+              <iframe 
+                width="100%" 
+                height="100%" 
+                src="https://www.youtube.com/embed/3iAd3jja5SY?autoplay=1&mute=1" 
+                title="Manual Planner Demo" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+                className="rounded-3xl"
+              />
             </div>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
