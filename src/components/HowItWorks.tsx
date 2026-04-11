@@ -83,7 +83,7 @@ export function HowItWorks() {
             <iframe 
               width="100%" 
               height="100%" 
-              src="https://www.youtube.com/embed/3iAd3jja5SY?autoplay=1&mute=1" 
+              src="https://www.youtube.com/embed/3iAd3jja5SY?autoplay=1&mute=1&playsinline=1&rel=0" 
               title="StratAI Demo Video" 
               frameBorder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
