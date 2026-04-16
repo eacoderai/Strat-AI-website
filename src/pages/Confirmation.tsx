@@ -107,9 +107,9 @@ export default function Confirmation() {
                     <Loader2 className="h-4 w-4 animate-spin" /> Verifying...
                   </span>
                 ) : (
-                  <Link to="/login" onClick={handleDashboardClick} aria-label="Go to Dashboard (opens StratAI app if installed)">
+                  <a href="stratai://" onClick={handleDashboardClick} aria-label="Go to Dashboard (opens StratAI app if installed)">
                     {isOpeningApp ? 'Opening StratAI…' : 'Go to Dashboard'} <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
+                  </a>
                 )}
               </Button>
               <p className="text-xs text-center text-gray-500">
