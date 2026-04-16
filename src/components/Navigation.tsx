@@ -232,7 +232,7 @@ export function Navigation() {
           >
             <Button 
               className="bg-primary hover:bg-primary/90 text-white rounded-full px-6"
-              onClick={() => navigate('/waitlist')}
+              onClick={() => navigate('/download')}
             >
               Get Started
             </Button>
@@ -297,6 +297,14 @@ export function Navigation() {
                   </a>
                 );
               })}
+              <div className="px-4 py-4">
+                <Button 
+                  className="w-full bg-primary hover:bg-primary/90 text-white rounded-xl h-12"
+                  onClick={() => { navigate('/download'); setMobileOpen(false); }}
+                >
+                  Get Started
+                </Button>
+              </div>
             </div>
           </div>
         </motion.div>

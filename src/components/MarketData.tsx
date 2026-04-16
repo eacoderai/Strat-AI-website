@@ -255,14 +255,6 @@ export function MarketData() {
               Real-time prices for stocks, crypto, and forex
             </p>
           </div>
-          <button
-            onClick={fetchAllData}
-            disabled={loading}
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors disabled:opacity-50"
-          >
-            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-            <span className="text-sm">Refresh</span>
-          </button>
         </div>
       </div>
 
@@ -296,13 +288,6 @@ export function MarketData() {
           animation-play-state: paused;
         }
       `}</style>
-
-      {lastUpdated && (
-        <p className="text-center text-xs text-gray-600 mt-6">
-          Last updated: {lastUpdated.toLocaleTimeString()}
-          {!import.meta.env.VITE_ALPHA_VANTAGE_API_KEY && ' • Demo mode'}
-        </p>
-      )}
     </section>
   );
 }

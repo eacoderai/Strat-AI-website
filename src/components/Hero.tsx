@@ -109,10 +109,10 @@ export function Hero() {
             <Button 
               size="lg" 
               className="bg-primary hover:bg-primary/90 text-white rounded-xl h-14 px-8 text-lg font-semibold group flex items-center gap-2"
-              onClick={() => navigate('/waitlist')}
+              onClick={() => navigate('/download')}
             >
               <Layout className="w-5 h-5" />
-              Join 5,000+ builders shaping StratAI
+              Get Started with StratAI
             </Button>
             <Button 
               size="lg" 
