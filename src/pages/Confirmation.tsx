@@ -33,7 +33,7 @@ export default function Confirmation() {
     setIsOpeningApp(true);
 
     const webFallbackUrl = `${window.location.origin}/download`;
-    const deepLinkUrl = `stratai://open?redirect_url=${encodeURIComponent(webFallbackUrl)}`;
+    const deepLinkUrl = "stratai://";
 
     let didHide = false;
     const onVisibilityChange = () => {
@@ -54,15 +54,16 @@ export default function Confirmation() {
     const timeoutId = window.setTimeout(() => {
       cleanup();
       if (!didHide) {
-        window.location.assign(webFallbackUrl);
+        window.location.href = webFallbackUrl;
       }
-    }, 1500);
+    }, 2000);
 
     try {
       window.location.href = deepLinkUrl;
-    } catch {
+    } catch (err) {
+      console.error("Deep link failed:", err);
       cleanup();
-      window.location.assign(webFallbackUrl);
+      window.location.href = webFallbackUrl;
     }
   };
 

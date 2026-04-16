@@ -23,7 +23,6 @@ import { Card, CardContent } from './ui/card';
 
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=REPLACE_ME';
 const APP_STORE_URL = 'https://apps.apple.com/app/idREPLACE_ME';
-const APK_URL = 'https://getstratai.com/downloads/stratai-latest.apk';
 
 const REVIEWS = [
   {
@@ -83,6 +82,7 @@ export default function AppDownloadCTA() {
   const location = useLocation();
   const navigate = useNavigate();
   const isDownloadRoute = location.pathname === '/download';
+  const isHomeRoute = location.pathname === '/';
   const containerRef = useRef(null);
   
   const { scrollY } = useScroll();
@@ -96,7 +96,7 @@ export default function AppDownloadCTA() {
   const [effectiveRef, setEffectiveRef] = useState<string | null>(null);
   const [showHint, setShowHint] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [activeTab, setActiveTab] = useState<'ios' | 'android' | 'apk'>('ios');
+  const [activeTab, setActiveTab] = useState<'ios' | 'android'>('ios');
 
   useEffect(() => {
     const unsubscribe = scrollY.on("change", (latest) => {
@@ -129,7 +129,7 @@ export default function AppDownloadCTA() {
   }, [isDownloadRoute]);
 
   useEffect(() => {
-    if (!isDownloadRoute) return;
+    if (!isDownloadRoute && !isHomeRoute) return;
 
     const stored = normalizeRef(localStorage.getItem('stratai_ref')) || normalizeRef(getCookieValue('stratai_ref'));
     if (queryRef) {
@@ -148,7 +148,7 @@ export default function AppDownloadCTA() {
     } else {
       setEffectiveRef(stored);
     }
-  }, [isDownloadRoute, queryRef]);
+  }, [isDownloadRoute, isHomeRoute, queryRef]);
 
   useEffect(() => {
     if (!isDownloadRoute) return;
@@ -180,11 +180,42 @@ export default function AppDownloadCTA() {
     }
   };
 
-  if (!isDownloadRoute) return null;
+  if (!isDownloadRoute && !isHomeRoute) return null;
 
   const playUrl = queryRef ? withRef(PLAY_STORE_URL, queryRef) : PLAY_STORE_URL;
   const appUrl = queryRef ? withRef(APP_STORE_URL, queryRef) : APP_STORE_URL;
-  const apkUrl = queryRef ? withRef(APK_URL, queryRef) : APK_URL;
+
+  if (isHomeRoute) {
+    return (
+      <section className="py-24 bg-card/50">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h2 className="text-4xl font-bold text-foreground mb-6">Experience StratAI on Mobile</h2>
+          <p className="text-muted-foreground text-xl mb-10 max-w-2xl mx-auto">
+            Trade with intelligence from anywhere. Get the app now.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/90 text-white rounded-2xl h-14 px-8 text-lg font-bold shadow-lg shadow-primary/20 group"
+              onClick={() => { trackClick('home_waitlist'); navigate('/waitlist'); }}
+            >
+              <Apple className="w-6 h-6 mr-2 group-hover:scale-110 transition-transform" />
+              Join Waitlist
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="rounded-2xl h-14 px-8 text-lg font-bold border-2 hover:bg-primary/5 group"
+              onClick={() => { trackClick('home_android'); navigate('/download'); }}
+            >
+              <PlayCircle className="w-6 h-6 mr-2 text-primary group-hover:scale-110 transition-transform" />
+              Get Android App
+            </Button>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <div className="relative bg-background overflow-x-hidden" ref={containerRef}>
@@ -205,8 +236,12 @@ export default function AppDownloadCTA() {
                 <span className="font-bold text-foreground hidden sm:inline">StratAI App</span>
               </div>
               <div className="flex gap-2">
-                <Button size="sm" variant="ghost" className="rounded-full text-xs cursor-default hover:bg-transparent" onClick={(e) => e.preventDefault()}>
-                  <Apple className="w-3.5 h-3.5 mr-1.5" /> Coming Soon
+                <Button 
+                  size="sm" 
+                  className="bg-primary hover:bg-primary/90 rounded-full text-xs" 
+                  onClick={() => { trackClick('sticky_waitlist'); navigate('/waitlist'); }}
+                >
+                  <Apple className="w-3.5 h-3.5 mr-1.5" /> Join App Store Waitlist
                 </Button>
                 <Button size="sm" variant="outline" className="rounded-full text-xs" onClick={() => { trackClick('sticky_android'); window.location.href = playUrl; }}>
                   <PlayCircle className="w-3.5 h-3.5 mr-1.5" /> Android
@@ -218,7 +253,7 @@ export default function AppDownloadCTA() {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-20 px-6">
+      <section className="relative pt-0 pb-0 px-6">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent -z-10" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-full bg-primary/5 blur-[120px] rounded-full -z-10" />
         
@@ -247,19 +282,19 @@ export default function AppDownloadCTA() {
             <div className="flex flex-wrap gap-4 mb-12">
               <Button 
                 size="lg" 
-                variant="ghost"
-                className="rounded-2xl h-14 px-8 text-lg font-bold border-2 border-border cursor-default hover:bg-transparent"
-                onClick={(e) => e.preventDefault()}
+                className="bg-primary hover:bg-primary/90 text-white rounded-2xl h-14 px-8 text-lg font-bold shadow-lg shadow-primary/20 group"
+                onClick={() => { trackClick('hero_waitlist'); navigate('/waitlist'); }}
               >
-                <Apple className="w-6 h-6 mr-2" />
-                Coming Soon
+                <Apple className="w-6 h-6 mr-2 group-hover:scale-110 transition-transform" />
+                Join Waitlist
               </Button>
               <Button 
                 size="lg" 
-                className="bg-primary hover:bg-primary/90 text-white rounded-2xl h-14 px-8 text-lg font-bold shadow-lg shadow-primary/20 group"
+                variant="outline"
+                className="rounded-2xl h-14 px-8 text-lg font-bold border-2 hover:bg-primary/5 group"
                 onClick={() => { trackClick('hero_android'); window.location.href = playUrl; }}
               >
-                <PlayCircle className="w-6 h-6 mr-2 group-hover:scale-110 transition-transform" />
+                <PlayCircle className="w-6 h-6 mr-2 text-primary group-hover:scale-110 transition-transform" />
                 Google Play
               </Button>
             </div>
@@ -317,17 +352,6 @@ export default function AppDownloadCTA() {
                     className="w-full h-full object-cover"
                   />
                 )}
-                {activeTab === 'apk' && (
-                  <motion.img
-                    key="apk-img"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    src="/Apple iPhone 16 Pro Max (1320x2868)/Apple iPhone 16 Pro Max Screenshot 3.png"
-                    alt="StratAI APK"
-                    className="w-full h-full object-cover"
-                  />
-                )}
               </AnimatePresence>
 
               {/* Interactive Overlays */}
@@ -343,7 +367,7 @@ export default function AppDownloadCTA() {
 
             {/* Platform Selectors */}
             <div className="absolute -right-4 lg:-right-12 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-20">
-              {(['ios', 'android', 'apk'] as const).map((platform) => (
+              {(['ios', 'android'] as const).map((platform) => (
                 <button
                   key={platform}
                   onClick={() => setActiveTab(platform)}
@@ -355,7 +379,6 @@ export default function AppDownloadCTA() {
                 >
                   {platform === 'ios' && <Apple className="w-6 h-6" />}
                   {platform === 'android' && <PlayCircle className="w-6 h-6" />}
-                  {platform === 'apk' && <Download className="w-6 h-6" />}
                 </button>
               ))}
             </div>
@@ -491,20 +514,21 @@ export default function AppDownloadCTA() {
           </div>
 
           <div className="space-y-4">
-            <div 
-              className="flex items-center justify-between p-6 rounded-3xl bg-card border border-border opacity-60 cursor-default"
+            <button 
+              onClick={() => { trackClick('list_waitlist'); navigate('/waitlist'); }}
+              className="w-full flex items-center justify-between p-6 rounded-3xl bg-card border border-border hover:border-primary hover:bg-primary/5 transition-all group"
             >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center">
-                  <Apple className="w-6 h-6 text-muted-foreground" />
+              <div className="flex items-center gap-4 text-left">
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                  <Apple className="w-6 h-6 text-primary" />
                 </div>
                 <div>
                   <div className="font-bold text-foreground">Apple App Store</div>
-                  <div className="text-sm text-muted-foreground">Coming Soon for iPhone and iPad</div>
+                  <div className="text-sm text-muted-foreground">Join the Waitlist for iOS</div>
                 </div>
               </div>
-              <Badge variant="outline" className="text-xs uppercase tracking-wider">Soon</Badge>
-            </div>
+              <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+            </button>
 
             <a 
               href={playUrl} 
@@ -518,23 +542,6 @@ export default function AppDownloadCTA() {
                 <div>
                   <div className="font-bold text-foreground">Google Play Store</div>
                   <div className="text-sm text-muted-foreground">For all Android devices</div>
-                </div>
-              </div>
-              <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
-            </a>
-
-            <a 
-              href={apkUrl} 
-              className="flex items-center justify-between p-6 rounded-3xl bg-card border border-border hover:border-primary hover:bg-primary/5 transition-all group"
-              onClick={() => trackClick('list_apk')}
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
-                  <Download className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <div className="font-bold text-foreground">Direct APK Download</div>
-                  <div className="text-sm text-muted-foreground">Install manually on Android</div>
                 </div>
               </div>
               <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
@@ -557,7 +564,7 @@ export default function AppDownloadCTA() {
       </section>
 
       {/* Footer CTA */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="pt-0 pb-0 relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 -z-10" />
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold text-foreground mb-6">Ready to automate your trading?</h2>
