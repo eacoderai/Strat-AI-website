@@ -32,7 +32,7 @@ export default function Confirmation() {
     e.preventDefault();
     setIsOpeningApp(true);
 
-    const webFallbackUrl = `${window.location.origin}/download`;
+    const webFallbackUrl = `${window.location.origin}/login`;
     const deepLinkUrl = `stratai://dashboard?source=web&fallback=${encodeURIComponent(webFallbackUrl)}`;
 
     let didHide = false;
