@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 
 export default function Confirmation() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isOpeningApp, setIsOpeningApp] = useState(false);
 
   useEffect(() => {
     // Simulate verification delay
@@ -16,6 +17,54 @@ export default function Confirmation() {
 
     return () => clearTimeout(timer);
   }, []);
+
+  const handleDashboardClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isLoading) return;
+
+    const ua = navigator.userAgent || '';
+    const isAndroid = /Android/i.test(ua);
+    const isIOS =
+      /iPad|iPhone|iPod/i.test(ua) ||
+      (navigator.platform === 'MacIntel' && (navigator as unknown as { maxTouchPoints?: number }).maxTouchPoints && (navigator as unknown as { maxTouchPoints: number }).maxTouchPoints > 1);
+
+    if (!isAndroid && !isIOS) return;
+
+    e.preventDefault();
+    setIsOpeningApp(true);
+
+    const webFallbackUrl = `${window.location.origin}/download`;
+    const deepLinkUrl = `stratai://dashboard?source=web&fallback=${encodeURIComponent(webFallbackUrl)}`;
+
+    let didHide = false;
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        didHide = true;
+        cleanup();
+      }
+    };
+
+    const cleanup = () => {
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      window.clearTimeout(timeoutId);
+      setIsOpeningApp(false);
+    };
+
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    const timeoutId = window.setTimeout(() => {
+      cleanup();
+      if (!didHide) {
+        window.location.assign(webFallbackUrl);
+      }
+    }, 1500);
+
+    try {
+      window.location.href = deepLinkUrl;
+    } catch {
+      cleanup();
+      window.location.assign(webFallbackUrl);
+    }
+  };
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center p-4 bg-gray-50/50">
@@ -58,8 +107,8 @@ export default function Confirmation() {
                     <Loader2 className="h-4 w-4 animate-spin" /> Verifying...
                   </span>
                 ) : (
-                  <Link to="/login">
-                    Go to Dashboard <ArrowRight className="ml-2 h-4 w-4" />
+                  <Link to="/login" onClick={handleDashboardClick} aria-label="Go to Dashboard (opens StratAI app if installed)">
+                    {isOpeningApp ? 'Opening StratAI…' : 'Go to Dashboard'} <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 )}
               </Button>
