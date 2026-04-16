@@ -201,12 +201,12 @@ export default function AppDownloadCTA() {
           >
             <div className="max-w-7xl mx-auto flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <img src="/StratAI Logo.png" alt="Logo" className="h-8 w-auto" />
+                <img src="/src/assets/StratAI Logo.png" alt="Logo" className="h-8 w-auto" />
                 <span className="font-bold text-foreground hidden sm:inline">StratAI App</span>
               </div>
               <div className="flex gap-2">
-                <Button size="sm" className="bg-primary hover:bg-primary/90 rounded-full text-xs" onClick={() => { trackClick('sticky_ios'); window.location.href = appUrl; }}>
-                  <Apple className="w-3.5 h-3.5 mr-1.5" /> iOS
+                <Button size="sm" variant="ghost" className="rounded-full text-xs cursor-default hover:bg-transparent" onClick={(e) => e.preventDefault()}>
+                  <Apple className="w-3.5 h-3.5 mr-1.5" /> Coming Soon
                 </Button>
                 <Button size="sm" variant="outline" className="rounded-full text-xs" onClick={() => { trackClick('sticky_android'); window.location.href = playUrl; }}>
                   <PlayCircle className="w-3.5 h-3.5 mr-1.5" /> Android
@@ -247,19 +247,19 @@ export default function AppDownloadCTA() {
             <div className="flex flex-wrap gap-4 mb-12">
               <Button 
                 size="lg" 
-                className="bg-primary hover:bg-primary/90 text-white rounded-2xl h-14 px-8 text-lg font-bold shadow-lg shadow-primary/20 group"
-                onClick={() => { trackClick('hero_ios'); window.location.href = appUrl; }}
+                variant="ghost"
+                className="rounded-2xl h-14 px-8 text-lg font-bold border-2 border-border cursor-default hover:bg-transparent"
+                onClick={(e) => e.preventDefault()}
               >
-                <Apple className="w-6 h-6 mr-2 group-hover:scale-110 transition-transform" />
-                App Store
+                <Apple className="w-6 h-6 mr-2" />
+                Coming Soon
               </Button>
               <Button 
                 size="lg" 
-                variant="outline"
-                className="rounded-2xl h-14 px-8 text-lg font-bold border-2 hover:bg-primary/5 group"
+                className="bg-primary hover:bg-primary/90 text-white rounded-2xl h-14 px-8 text-lg font-bold shadow-lg shadow-primary/20 group"
                 onClick={() => { trackClick('hero_android'); window.location.href = playUrl; }}
               >
-                <PlayCircle className="w-6 h-6 mr-2 text-primary group-hover:scale-110 transition-transform" />
+                <PlayCircle className="w-6 h-6 mr-2 group-hover:scale-110 transition-transform" />
                 Google Play
               </Button>
             </div>
@@ -491,22 +491,20 @@ export default function AppDownloadCTA() {
           </div>
 
           <div className="space-y-4">
-            <a 
-              href={appUrl} 
-              className="flex items-center justify-between p-6 rounded-3xl bg-card border border-border hover:border-primary hover:bg-primary/5 transition-all group"
-              onClick={() => trackClick('list_ios')}
+            <div 
+              className="flex items-center justify-between p-6 rounded-3xl bg-card border border-border opacity-60 cursor-default"
             >
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
-                  <Apple className="w-6 h-6 text-primary" />
+                <div className="w-12 h-12 rounded-2xl bg-muted flex items-center justify-center">
+                  <Apple className="w-6 h-6 text-muted-foreground" />
                 </div>
                 <div>
                   <div className="font-bold text-foreground">Apple App Store</div>
-                  <div className="text-sm text-muted-foreground">Optimized for iPhone and iPad</div>
+                  <div className="text-sm text-muted-foreground">Coming Soon for iPhone and iPad</div>
                 </div>
               </div>
-              <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
-            </a>
+              <Badge variant="outline" className="text-xs uppercase tracking-wider">Soon</Badge>
+            </div>
 
             <a 
               href={playUrl} 
